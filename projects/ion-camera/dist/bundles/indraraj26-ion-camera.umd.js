@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ionic-native/camera/ngx'), require('@ionic-native/ionic-webview/ngx')) :
-    typeof define === 'function' && define.amd ? define('ion-camera', ['exports', '@angular/core', '@ionic-native/camera/ngx', '@ionic-native/ionic-webview/ngx'], factory) :
-    (global = global || self, factory(global['ion-camera'] = {}, global.ng.core, global.ngx, global.ngx$1));
+    typeof define === 'function' && define.amd ? define('@indraraj26/ion-camera', ['exports', '@angular/core', '@ionic-native/camera/ngx', '@ionic-native/ionic-webview/ngx'], factory) :
+    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ngx, global.ngx$1));
 }(this, (function (exports, core, ngx, ngx$1) { 'use strict';
 
     /*! *****************************************************************************
@@ -313,4 +313,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=ion-camera.umd.js.map
+//# sourceMappingURL=indraraj26-ion-camera.umd.js.map

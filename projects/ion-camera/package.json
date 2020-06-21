@@ -1,5 +1,5 @@
 {
-	"name": "ion-camera",
+	"name": "@indraraj26/ion-camera",
 	"version": "0.0.1",
 	"peerDependencies": {
 		"@angular/common": "^9.1.9",
@@ -14,5 +14,24 @@
 		},
 		"dest": "dist"
 	},
-	"dependencies": {}
+	"dependencies": {},
+	"description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.",
+	"main": "index.js",
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/indraraj26/IonCamera.git"
+	},
+	"keywords": [
+		"ion-camera"
+	],
+	"author": "indraraj26",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/indraraj26/IonCamera/issues"
+	},
+	"homepage": "https://github.com/indraraj26/IonCamera#readme"
 }

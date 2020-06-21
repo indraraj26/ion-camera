@@ -1,5 +1,5 @@
 {
-  "name": "ion-camera",
+  "name": "@indraraj26/ion-camera",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
@@ -11,24 +11,28 @@
   "dependencies": {
     "tslib": "^1.10.0"
   },
-  "main": "bundles/ion-camera.umd.js",
-  "module": "fesm5/ion-camera.js",
-  "es2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/ion-camera.js",
-  "es2015": "fesm2015/ion-camera.js",
-  "esm5": "esm5/ion-camera.js",
-  "esm2015": "esm2015/ion-camera.js",
-  "fesm5": "fesm5/ion-camera.js",
-  "fesm2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/ion-camera.js",
-  "fesm2015": "fesm2015/ion-camera.js",
-  "typings": "ion-camera.d.ts",
-  "metadata": "ion-camera.metadata.json",
-  "sideEffects": false,
-  "__processed_by_ivy_ngcc__": {
-    "es2015": "9.1.9",
-    "fesm2015": "9.1.9",
-    "typings": "9.1.9"
+  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.",
+  "main": "bundles/indraraj26-ion-camera.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indraraj26/IonCamera.git"
   },
-  "scripts": {
-    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
-  }
+  "keywords": [
+    "ion-camera"
+  ],
+  "author": "indraraj26",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indraraj26/IonCamera/issues"
+  },
+  "homepage": "https://github.com/indraraj26/IonCamera#readme",
+  "module": "fesm5/indraraj26-ion-camera.js",
+  "es2015": "fesm2015/indraraj26-ion-camera.js",
+  "esm5": "esm5/indraraj26-ion-camera.js",
+  "esm2015": "esm2015/indraraj26-ion-camera.js",
+  "fesm5": "fesm5/indraraj26-ion-camera.js",
+  "fesm2015": "fesm2015/indraraj26-ion-camera.js",
+  "typings": "indraraj26-ion-camera.d.ts",
+  "metadata": "indraraj26-ion-camera.metadata.json",
+  "sideEffects": false
 }

@@ -96,4 +96,4 @@ var IonCameraModule = /** @class */ (function () {
  */
 
 export { IonCameraDirective, IonCameraModule };
-//# sourceMappingURL=ion-camera.js.map
+//# sourceMappingURL=indraraj26-ion-camera.js.map
