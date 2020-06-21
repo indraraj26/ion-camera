@@ -1,0 +1,18 @@
+{
+	"name": "ion-camera",
+	"version": "0.0.1",
+	"peerDependencies": {
+		"@angular/common": "^9.1.9",
+		"@angular/core": "^9.1.9",
+		"@ionic-native/camera": "^5.26.0",
+		"@ionic-native/core": "^5.26.0",
+		"@ionic-native/ionic-webview": "^5.26.0"
+	},
+	"ngPackage": {
+		"lib": {
+			"entryFile": "public-api.ts"
+		},
+		"dest": "dist"
+	},
+	"dependencies": {}
+}

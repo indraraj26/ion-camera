@@ -1,0 +1,17 @@
+import { __decorate } from "tslib";
+import { NgModule } from '@angular/core';
+import { IonCameraDirective } from './ion-camera.directive';
+import { Camera } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+let IonCameraModule = class IonCameraModule {
+};
+IonCameraModule = __decorate([
+    NgModule({
+        declarations: [IonCameraDirective],
+        imports: [],
+        exports: [IonCameraDirective],
+        providers: [Camera, WebView],
+    })
+], IonCameraModule);
+export { IonCameraModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW9uLWNhbWVyYS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pb24tY2FtZXJhLyIsInNvdXJjZXMiOlsic3JjL2lvbi1jYW1lcmEubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBQ3pDLE9BQU8sRUFBRSxrQkFBa0IsRUFBRSxNQUFNLHdCQUF3QixDQUFDO0FBQzVELE9BQU8sRUFBRSxNQUFNLEVBQUUsTUFBTSwwQkFBMEIsQ0FBQztBQUNsRCxPQUFPLEVBQUUsT0FBTyxFQUFFLE1BQU0saUNBQWlDLENBQUM7QUFRMUQsSUFBYSxlQUFlLEdBQTVCLE1BQWEsZUFBZTtDQUFHLENBQUE7QUFBbEIsZUFBZTtJQU4zQixRQUFRLENBQUM7UUFDVCxZQUFZLEVBQUUsQ0FBQyxrQkFBa0IsQ0FBQztRQUNsQyxPQUFPLEVBQUUsRUFBRTtRQUNYLE9BQU8sRUFBRSxDQUFDLGtCQUFrQixDQUFDO1FBQzdCLFNBQVMsRUFBRSxDQUFDLE1BQU0sRUFBRSxPQUFPLENBQUM7S0FDNUIsQ0FBQztHQUNXLGVBQWUsQ0FBRztTQUFsQixlQUFlIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IElvbkNhbWVyYURpcmVjdGl2ZSB9IGZyb20gJy4vaW9uLWNhbWVyYS5kaXJlY3RpdmUnO1xuaW1wb3J0IHsgQ2FtZXJhIH0gZnJvbSAnQGlvbmljLW5hdGl2ZS9jYW1lcmEvbmd4JztcbmltcG9ydCB7IFdlYlZpZXcgfSBmcm9tICdAaW9uaWMtbmF0aXZlL2lvbmljLXdlYnZpZXcvbmd4JztcblxuQE5nTW9kdWxlKHtcblx0ZGVjbGFyYXRpb25zOiBbSW9uQ2FtZXJhRGlyZWN0aXZlXSxcblx0aW1wb3J0czogW10sXG5cdGV4cG9ydHM6IFtJb25DYW1lcmFEaXJlY3RpdmVdLFxuXHRwcm92aWRlcnM6IFtDYW1lcmEsIFdlYlZpZXddLFxufSlcbmV4cG9ydCBjbGFzcyBJb25DYW1lcmFNb2R1bGUge31cbiJdfQ==

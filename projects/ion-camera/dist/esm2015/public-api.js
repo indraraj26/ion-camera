@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of ion-camera
+ */
+export * from './src/ion-camera.directive';
+export * from './src/ion-camera.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2lvbi1jYW1lcmEvIiwic291cmNlcyI6WyJwdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyw0QkFBNEIsQ0FBQztBQUMzQyxjQUFjLHlCQUF5QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiBpb24tY2FtZXJhXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9zcmMvaW9uLWNhbWVyYS5kaXJlY3RpdmUnO1xuZXhwb3J0ICogZnJvbSAnLi9zcmMvaW9uLWNhbWVyYS5tb2R1bGUnO1xuZXhwb3J0ICogZnJvbSAnLi9zcmMvY29uZmlnLmludGVyZmFjZSc7XG4iXX0=
