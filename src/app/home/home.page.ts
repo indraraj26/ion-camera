@@ -14,7 +14,7 @@ export class HomePage {
 		destinationType: this.camera.DestinationType.FILE_URI,
 		encodingType: this.camera.EncodingType.JPEG,
 		mediaType: this.camera.MediaType.PICTURE,
-		outputResult: 'blob',
+		outputType: 'blob',
 	};
 
 	onCameraResult(event: any) {

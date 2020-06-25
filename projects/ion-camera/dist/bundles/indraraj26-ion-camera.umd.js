@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ionic-native/camera/ngx'), require('@ionic-native/ionic-webview/ngx')) :
-    typeof define === 'function' && define.amd ? define('@indraraj26/ion-camera', ['exports', '@angular/core', '@ionic-native/camera/ngx', '@ionic-native/ionic-webview/ngx'], factory) :
-    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ngx, global.ngx$1));
-}(this, (function (exports, core, ngx, ngx$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ionic-native/camera/ngx'), require('@angular/common/http'), require('@ionic-native/ionic-webview/ngx'), require('@ionic-native/camera/ngx/index'), require('@ionic-native/ionic-webview/ngx/index')) :
+    typeof define === 'function' && define.amd ? define('@indraraj26/ion-camera', ['exports', '@angular/core', '@ionic-native/camera/ngx', '@angular/common/http', '@ionic-native/ionic-webview/ngx', '@ionic-native/camera/ngx/index', '@ionic-native/ionic-webview/ngx/index'], factory) :
+    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ngx, global.ng.common.http, global.ngx$1, global.index, global.index$1));
+}(this, (function (exports, core, ngx, http, ngx$1, index, index$1) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -223,61 +223,91 @@
         return value;
     }
 
-    var IonCameraDirective = /** @class */ (function () {
-        function IonCameraDirective(_camera, _webview) {
+    var IonCameraService = /** @class */ (function () {
+        function IonCameraService(_httpClient, _camera, _webview) {
+            this._httpClient = _httpClient;
             this._camera = _camera;
             this._webview = _webview;
-            this.cameraResult = new core.EventEmitter();
         }
-        IonCameraDirective.prototype.onCameraElementClicked = function (event) {
-            if (this.config.outputResult === 'blob' &&
-                this._camera.DestinationType.FILE_URI) {
-                this.cameraAction(this.config);
-            }
-            else if (this.config.outputResult === 'base64' &&
-                this._camera.DestinationType.DATA_URL) {
-                this.cameraAction(this.config);
-            }
-            else {
-                throw new Error('This method is not yet implmented! either use DATA_URL or FILE_URI');
-            }
-        };
-        IonCameraDirective.prototype.cameraAction = function (option) {
+        IonCameraService.prototype.cameraAction = function (option) {
             return __awaiter(this, void 0, void 0, function () {
                 var result, blobUrl, blob, e_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            _a.trys.push([0, 5, , 6]);
+                            _a.trys.push([0, 4, , 5]);
                             return [4 /*yield*/, this._camera.getPicture(option)];
                         case 1:
                             result = _a.sent();
-                            if (!(this.config.outputResult === 'blob')) return [3 /*break*/, 3];
+                            if (!(option.outputType === 'blob')) return [3 /*break*/, 3];
                             blobUrl = this._webview.convertFileSrc(result);
                             return [4 /*yield*/, fetch(blobUrl).then(function (r) { return r.blob(); })];
                         case 2:
                             blob = _a.sent();
-                            this.cameraResult.emit(blob);
-                            return [3 /*break*/, 4];
-                        case 3:
-                            this.cameraResult.emit(result);
-                            _a.label = 4;
-                        case 4: return [3 /*break*/, 6];
-                        case 5:
+                            return [2 /*return*/, blob];
+                        case 3: return [2 /*return*/, result];
+                        case 4:
                             e_1 = _a.sent();
-                            console.log(e_1);
-                            return [3 /*break*/, 6];
-                        case 6: return [2 /*return*/];
+                            if (e_1 === 'No Image Selected') {
+                                return [2 /*return*/, e_1];
+                            }
+                            return [2 /*return*/, 'no-permission'];
+                        case 5: return [2 /*return*/];
+                    }
+                });
+            });
+        };
+        IonCameraService.ctorParameters = function () { return [
+            { type: http.HttpClient },
+            { type: ngx.Camera },
+            { type: ngx$1.WebView }
+        ]; };
+        IonCameraService.ɵprov = core.ɵɵdefineInjectable({ factory: function IonCameraService_Factory() { return new IonCameraService(core.ɵɵinject(http.HttpClient), core.ɵɵinject(index.Camera), core.ɵɵinject(index$1.WebView)); }, token: IonCameraService, providedIn: "root" });
+        IonCameraService = __decorate([
+            core.Injectable({ providedIn: 'root' })
+        ], IonCameraService);
+        return IonCameraService;
+    }());
+
+    var IonCameraDirective = /** @class */ (function () {
+        function IonCameraDirective(_ionCameraService, _camera) {
+            this._ionCameraService = _ionCameraService;
+            this._camera = _camera;
+            this.cameraResult = new core.EventEmitter();
+        }
+        IonCameraDirective.prototype.onCameraElementClicked = function (event) {
+            if (this.config.outputType === 'blob' &&
+                this._camera.DestinationType.FILE_URI) {
+                this.getCameraData(this.config);
+            }
+            else if (this.config.outputType === 'base64' &&
+                this._camera.DestinationType.DATA_URL) {
+                this.getCameraData(this.config);
+            }
+            else {
+                throw new Error('This method is not yet implmented! either use DATA_URL or FILE_URI');
+            }
+        };
+        IonCameraDirective.prototype.getCameraData = function (option) {
+            return __awaiter(this, void 0, void 0, function () {
+                var result;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, this._ionCameraService.cameraAction(option)];
+                        case 1:
+                            result = _a.sent();
+                            this.cameraResult.emit(result);
+                            return [2 /*return*/];
                     }
                 });
             });
         };
         IonCameraDirective.ctorParameters = function () { return [
-            { type: ngx.Camera },
-            { type: ngx$1.WebView }
+            { type: IonCameraService },
+            { type: ngx.Camera }
         ]; };
         __decorate([
-            core.Input()
+            core.Input('appIonCamera')
         ], IonCameraDirective.prototype, "config", void 0);
         __decorate([
             core.Output()
@@ -296,10 +326,18 @@
     var IonCameraModule = /** @class */ (function () {
         function IonCameraModule() {
         }
-        IonCameraModule = __decorate([
+        IonCameraModule_1 = IonCameraModule;
+        IonCameraModule.forRoot = function () {
+            return {
+                ngModule: IonCameraModule_1,
+                providers: [IonCameraService],
+            };
+        };
+        var IonCameraModule_1;
+        IonCameraModule = IonCameraModule_1 = __decorate([
             core.NgModule({
                 declarations: [IonCameraDirective],
-                imports: [],
+                imports: [http.HttpClientModule],
                 exports: [IonCameraDirective],
                 providers: [ngx.Camera, ngx$1.WebView],
             })
@@ -309,6 +347,7 @@
 
     exports.IonCameraDirective = IonCameraDirective;
     exports.IonCameraModule = IonCameraModule;
+    exports.IonCameraService = IonCameraService;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

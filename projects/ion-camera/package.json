@@ -1,6 +1,6 @@
 {
 	"name": "@indraraj26/ion-camera",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"peerDependencies": {
 		"@angular/common": "^9.1.9",
 		"@angular/core": "^9.1.9",
@@ -23,7 +23,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/indraraj26/IonCamera.git"
+		"url": "git+https://github.com/indraraj26/ion-camera.git"
 	},
 	"keywords": [
 		"ion-camera"
@@ -31,7 +31,7 @@
 	"author": "indraraj26",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/indraraj26/IonCamera/issues"
+		"url": "https://github.com/indraraj26/ion-Camera/issues"
 	},
-	"homepage": "https://github.com/indraraj26/IonCamera#readme"
+	"homepage": "https://github.com/indraraj26/ion-camera#readme"
 }
