@@ -6,7 +6,7 @@ import {
 	EventEmitter,
 } from '@angular/core';
 import { IConfig } from './config.interface';
-import { IonCameraService } from './ion-camra.service';
+import { IonCameraService } from './ion-camera.service';
 
 @Directive({
 	selector: '[appIonCamera]',

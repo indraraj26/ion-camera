@@ -3,7 +3,7 @@ import { IonCameraDirective } from './ion-camera.directive';
 import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { HttpClientModule } from '@angular/common/http';
-import { IonCameraService } from './ion-camra.service';
+import { IonCameraService } from './ion-camera.service';
 
 @NgModule({
 	declarations: [IonCameraDirective],
