@@ -4,6 +4,11 @@
 	"homepage": "https://github.com/indraraj26/ion-camera",
 	"author": "indraraj26",
 	"license": "MIT",
+	"keywords": [
+		"ion-camera",
+		"ionic 4 camera blob",
+		"ionic 5 camera blob"
+	],
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
