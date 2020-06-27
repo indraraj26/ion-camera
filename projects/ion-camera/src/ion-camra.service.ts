@@ -16,7 +16,7 @@ export class IonCameraService {
 	async cameraAction(option: IConfig) {
 		try {
 			const result = await this._camera.getPicture(option);
-			if (option.outputType === 'blob') {
+			if (option.destinationType === 1) {
 				const blobUrl = this._webview.convertFileSrc(result);
 				const blob = await fetch(blobUrl).then((r) => r.blob());
 				return blob;

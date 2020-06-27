@@ -1,7 +1,7 @@
 import { __awaiter, __decorate } from 'tslib';
 import { ɵɵdefineInjectable, ɵɵinject, Injectable, EventEmitter, Input, Output, HostListener, Directive, NgModule } from '@angular/core';
-import { Camera } from '@ionic-native/camera/ngx';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Camera as Camera$1 } from '@ionic-native/camera/ngx/index';
 import { WebView as WebView$1 } from '@ionic-native/ionic-webview/ngx/index';
@@ -16,7 +16,7 @@ let IonCameraService = class IonCameraService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield this._camera.getPicture(option);
-                if (option.outputType === 'blob') {
+                if (option.destinationType === 1) {
                     const blobUrl = this._webview.convertFileSrc(result);
                     const blob = yield fetch(blobUrl).then((r) => r.blob());
                     return blob;
@@ -43,22 +43,21 @@ IonCameraService = __decorate([
 ], IonCameraService);
 
 let IonCameraDirective = class IonCameraDirective {
-    constructor(_ionCameraService, _camera) {
+    constructor(_ionCameraService) {
         this._ionCameraService = _ionCameraService;
-        this._camera = _camera;
         this.cameraResult = new EventEmitter();
     }
     onCameraElementClicked(event) {
-        if (this.config.outputType === 'blob' &&
-            this._camera.DestinationType.FILE_URI) {
+        // File URI
+        if (this.config.destinationType === 1) {
             this.getCameraData(this.config);
+            // Data URL
         }
-        else if (this.config.outputType === 'base64' &&
-            this._camera.DestinationType.DATA_URL) {
+        else if (this.config.destinationType === 0) {
             this.getCameraData(this.config);
         }
         else {
-            throw new Error('This method is not yet implmented! either use DATA_URL or FILE_URI');
+            throw new Error('This method is not yet implmented! either use DATA_URL(0) or FILE_URI(1)');
         }
     }
     getCameraData(option) {
@@ -69,8 +68,7 @@ let IonCameraDirective = class IonCameraDirective {
     }
 };
 IonCameraDirective.ctorParameters = () => [
-    { type: IonCameraService },
-    { type: Camera }
+    { type: IonCameraService }
 ];
 __decorate([
     Input('appIonCamera')

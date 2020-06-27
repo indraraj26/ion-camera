@@ -1,6 +1,6 @@
 {
 	"name": "@indraraj26/ion-camera",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"peerDependencies": {
 		"@angular/common": "^9.1.9",
 		"@angular/core": "^9.1.9",
@@ -26,10 +26,12 @@
 		"url": "git+https://github.com/indraraj26/ion-camera.git"
 	},
 	"keywords": [
-		"ion-camera"
+		"ion-camera",
+		"ionic 4 camera blob",
+		"ionic 5 camera blob"
 	],
 	"author": "indraraj26",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/indraraj26/ion-Camera/issues"
 	},

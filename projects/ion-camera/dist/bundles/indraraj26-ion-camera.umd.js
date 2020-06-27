@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ionic-native/camera/ngx'), require('@angular/common/http'), require('@ionic-native/ionic-webview/ngx'), require('@ionic-native/camera/ngx/index'), require('@ionic-native/ionic-webview/ngx/index')) :
-    typeof define === 'function' && define.amd ? define('@indraraj26/ion-camera', ['exports', '@angular/core', '@ionic-native/camera/ngx', '@angular/common/http', '@ionic-native/ionic-webview/ngx', '@ionic-native/camera/ngx/index', '@ionic-native/ionic-webview/ngx/index'], factory) :
-    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ngx, global.ng.common.http, global.ngx$1, global.index, global.index$1));
-}(this, (function (exports, core, ngx, http, ngx$1, index, index$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common/http'), require('@ionic-native/camera/ngx'), require('@ionic-native/ionic-webview/ngx'), require('@ionic-native/camera/ngx/index'), require('@ionic-native/ionic-webview/ngx/index')) :
+    typeof define === 'function' && define.amd ? define('@indraraj26/ion-camera', ['exports', '@angular/core', '@angular/common/http', '@ionic-native/camera/ngx', '@ionic-native/ionic-webview/ngx', '@ionic-native/camera/ngx/index', '@ionic-native/ionic-webview/ngx/index'], factory) :
+    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ng.common.http, global.ngx, global.ngx$1, global.index, global.index$1));
+}(this, (function (exports, core, http, ngx, ngx$1, index, index$1) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -239,7 +239,7 @@
                             return [4 /*yield*/, this._camera.getPicture(option)];
                         case 1:
                             result = _a.sent();
-                            if (!(option.outputType === 'blob')) return [3 /*break*/, 3];
+                            if (!(option.destinationType === 1)) return [3 /*break*/, 3];
                             blobUrl = this._webview.convertFileSrc(result);
                             return [4 /*yield*/, fetch(blobUrl).then(function (r) { return r.blob(); })];
                         case 2:
@@ -270,22 +270,21 @@
     }());
 
     var IonCameraDirective = /** @class */ (function () {
-        function IonCameraDirective(_ionCameraService, _camera) {
+        function IonCameraDirective(_ionCameraService) {
             this._ionCameraService = _ionCameraService;
-            this._camera = _camera;
             this.cameraResult = new core.EventEmitter();
         }
         IonCameraDirective.prototype.onCameraElementClicked = function (event) {
-            if (this.config.outputType === 'blob' &&
-                this._camera.DestinationType.FILE_URI) {
+            // File URI
+            if (this.config.destinationType === 1) {
                 this.getCameraData(this.config);
+                // Data URL
             }
-            else if (this.config.outputType === 'base64' &&
-                this._camera.DestinationType.DATA_URL) {
+            else if (this.config.destinationType === 0) {
                 this.getCameraData(this.config);
             }
             else {
-                throw new Error('This method is not yet implmented! either use DATA_URL or FILE_URI');
+                throw new Error('This method is not yet implmented! either use DATA_URL(0) or FILE_URI(1)');
             }
         };
         IonCameraDirective.prototype.getCameraData = function (option) {
@@ -303,8 +302,7 @@
             });
         };
         IonCameraDirective.ctorParameters = function () { return [
-            { type: IonCameraService },
-            { type: ngx.Camera }
+            { type: IonCameraService }
         ]; };
         __decorate([
             core.Input('appIonCamera')

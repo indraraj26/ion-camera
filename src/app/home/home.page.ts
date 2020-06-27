@@ -1,24 +1,32 @@
 import { Component } from '@angular/core';
 import { Camera } from '@ionic-native/camera/ngx';
-// import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { IonCameraService } from './../../../projects/ion-camera/src/ion-camra.service';
+import { IConfig } from 'projects/ion-camera/dist/public-api';
 @Component({
 	selector: 'app-home',
 	templateUrl: 'home.page.html',
 	styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-	constructor(private camera: Camera) {}
-
-	config = {
+	config: IConfig = {
 		quality: 50,
-		destinationType: this.camera.DestinationType.FILE_URI,
-		encodingType: this.camera.EncodingType.JPEG,
-		mediaType: this.camera.MediaType.PICTURE,
-		outputType: 'blob',
+		destinationType: this._camera.DestinationType.FILE_URI,
+		encodingType: this._camera.EncodingType.JPEG,
+		mediaType: this._camera.MediaType.PICTURE,
+		sourceType: this._camera.PictureSourceType.CAMERA,
 	};
 
+	constructor(
+		private _ionCameraService: IonCameraService,
+		private _camera: Camera,
+	) {}
+
+	async openCameraThroughService() {
+		const result = await this._ionCameraService.cameraAction(this.config);
+		console.log(result, 'blob or base64');
+	}
+
 	onCameraResult(event: any) {
-		console.log('returns base64 or blob');
-		console.log(event);
+		console.log(event, 'blob or base64');
 	}
 }

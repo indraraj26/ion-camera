@@ -5,7 +5,6 @@ import {
 	Output,
 	EventEmitter,
 } from '@angular/core';
-import { Camera } from '@ionic-native/camera/ngx';
 import { IConfig } from './config.interface';
 import { IonCameraService } from './ion-camra.service';
 
@@ -17,27 +16,20 @@ export class IonCameraDirective {
 	@Output() cameraResult: EventEmitter<any> = new EventEmitter();
 
 	@HostListener('click', ['$event']) onCameraElementClicked(event: Event) {
-		if (
-			this.config.outputType === 'blob' &&
-			this._camera.DestinationType.FILE_URI
-		) {
+		// File URI
+		if (this.config.destinationType === 1) {
 			this.getCameraData(this.config);
-		} else if (
-			this.config.outputType === 'base64' &&
-			this._camera.DestinationType.DATA_URL
-		) {
+			// Data URL
+		} else if (this.config.destinationType === 0) {
 			this.getCameraData(this.config);
 		} else {
 			throw new Error(
-				'This method is not yet implmented! either use DATA_URL or FILE_URI',
+				'This method is not yet implmented! either use DATA_URL(0) or FILE_URI(1)',
 			);
 		}
 	}
 
-	constructor(
-		private _ionCameraService: IonCameraService,
-		private _camera: Camera,
-	) {}
+	constructor(private _ionCameraService: IonCameraService) {}
 
 	async getCameraData(option: IConfig) {
 		const result = await this._ionCameraService.cameraAction(option);

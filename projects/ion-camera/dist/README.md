@@ -1,24 +1,131 @@
-# IonCamera
+# ion camera
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+ion camera provides directive and service to integrate cordova camera plugin on your Ionic application.
 
-## Code scaffolding
+# Demo
 
-Run `ng generate component component-name --project ion-camera` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ion-camera`.
-> Note: Don't forget to add `--project ion-camera` or else it will be added to the default project in your `angular.json` file. 
+[Demo application](https://github.com/indraraj26/ionic5-starter-tabs-sidemenu/tree/ionic-camera-demo)
+<img src="https://github.com/indraraj26/ion-camera/blob/master/src/assets/images/source.JPG" alt="ion-camera-demo" width="250"/>
 
-## Build
+# Getting Started
 
-Run `ng build ion-camera` to build the project. The build artifacts will be stored in the `dist/` directory.
+Feature:
+File URI will give you an blob
+Directive and Service that manages everything for you out of box.
 
-## Publishing
+# Installation
 
-After building your library with `ng build ion-camera`, go to the dist folder `cd dist/ion-camera` and run `npm publish`.
+Before you install this package make sure that you are having below package installed on your project.
 
-## Running unit tests
+```
+ionic cordova plugin add cordova-plugin-camera
+npm install @ionic-native/camera
 
-Run `ng test ion-camera` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ionic cordova plugin add cordova-plugin-ionic-webview
+npm install @ionic-native/ionic-webview
+```
 
-## Further help
+```
+npm install @indraraj26/ion-camera
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+And then include it in your module (see app.module.ts):
+
+```
+import { IonCameraModule } from '@indraraj26/ion-camera';
+// ...
+
+@NgModule({
+imports: [
+ IonCameraModule.forRoot()
+// ...
+]
+// ...
+})
+export class AppModule {}
+```
+
+If you are going to use this in feature module then include it in your feat.module.ts to use appIonCamera directive
+
+```
+import { IonCameraModule } from '@indraraj26/ion-camera';
+// ...
+
+@NgModule({
+imports: [
+ IonCameraModule
+// ...
+]
+// ...
+})
+export class FeatModule {}
+```
+
+# Usage
+
+Destination type FILE_URI it will return blob (recommend you to use)
+Destination type DATA_URL it will return base64 (default feature of cordova camera plugin and not recommended)
+
+Directive:
+
+You can place below directive on any element.
+
+home.html
+
+```
+<ion-label [appIonCamera]="config" (cameraResult)="onCameraResult($event)">Open camera</ion-label>
+```
+
+home.ts
+
+```
+import { IonCameraService, IConfig } from '@indraraj26/ion-camera';
+
+export class HomePage {
+constructor(private camera: Camera) {}
+
+    config: IConfig = {
+    	quality: 50,
+    	destinationType: this.camera.DestinationType.FILE_URI,
+    	encodingType: this.camera.EncodingType.JPEG,
+    	mediaType: this.camera.MediaType.PICTURE,
+    	sourceType: this.camera.PictureSourceType.CAMERA,
+    };
+
+    onCameraResult(event: any) {
+    	console.log('returns base64 or blob');
+    	console.log(event);
+    }
+
+}
+
+```
+
+Service:
+
+```
+import { IonCameraService, IConfig } from '@indraraj26/ion-camera';
+
+export class HomePage {
+
+	config: IConfig = {
+		quality: 50,
+		destinationType: this.camera.DestinationType.FILE_URI,
+		encodingType: this.camera.EncodingType.JPEG,
+		mediaType: this.camera.MediaType.PICTURE,
+    sourceType: this.camera.PictureSourceType.CAMERA,
+    outputType: 'blob'
+  };
+
+  constructor(private _ionCameraService: IonCameraService, private _camera: Camera) { }
+
+  async openCameraThroughService() {
+    const result = await this._ionCameraService.cameraAction(this.config);
+    console.log(result, 'blob or base64')
+  }
+}
+```
+
+# Help Improve
+
+Found a bug or an issue with this? [Open a new issue](https://github.com/indraraj26/ion-camera/issues) here on GitHub.
