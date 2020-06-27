@@ -8,7 +8,7 @@ ion camera provides directive and service to integrate cordova camera plugin on 
 
 # Getting Started
 
-Feature:
+## Feature:
 
 -   File URI will give you an blob
 -   Directive and Service that manages everything for you out of box.

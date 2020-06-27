@@ -2,16 +2,16 @@
 
 ion camera provides directive and service to integrate cordova camera plugin on your Ionic application.
 
-# Demo
+# [Demo application](https://github.com/indraraj26/ionic5-starter-tabs-sidemenu/tree/ionic-camera-demo)
 
-[Demo application](https://github.com/indraraj26/ionic5-starter-tabs-sidemenu/tree/ionic-camera-demo)
 <img src="https://github.com/indraraj26/ion-camera/blob/master/src/assets/images/source.JPG" alt="ion-camera-demo" width="250"/>
 
 # Getting Started
 
 Feature:
-File URI will give you an blob
-Directive and Service that manages everything for you out of box.
+
+-   File URI will give you an blob
+-   Directive and Service that manages everything for you out of box.
 
 # Installation
 
