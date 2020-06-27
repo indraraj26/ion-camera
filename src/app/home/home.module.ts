@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { IonCameraModule } from '../../../projects/ion-camera/dist';
+import { IonCameraModule } from '@indraraj26/ion-camera';
 
 @NgModule({
 	imports: [

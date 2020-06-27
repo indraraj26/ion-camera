@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { IonCameraModule } from '../../projects/ion-camera/dist';
+import { IonCameraModule } from '@indraraj26/ion-camera';
 @NgModule({
 	declarations: [AppComponent],
 	entryComponents: [],

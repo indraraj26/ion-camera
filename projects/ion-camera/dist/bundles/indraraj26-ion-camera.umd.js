@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common/http'), require('@ionic-native/camera/ngx'), require('@ionic-native/ionic-webview/ngx'), require('@ionic-native/camera/ngx/index'), require('@ionic-native/ionic-webview/ngx/index')) :
     typeof define === 'function' && define.amd ? define('@indraraj26/ion-camera', ['exports', '@angular/core', '@angular/common/http', '@ionic-native/camera/ngx', '@ionic-native/ionic-webview/ngx', '@ionic-native/camera/ngx/index', '@ionic-native/ionic-webview/ngx/index'], factory) :
-    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ng.common.http, global.ngx, global.ngx$1, global.index, global.index$1));
+    (global = global || self, factory((global.indraraj26 = global.indraraj26 || {}, global.indraraj26['ion-camera'] = {}), global.ng.core, global.ng.common.http, global['@ionic-native/camera/ngx'], global['@ionic-native/ionic-webview/ngx'], global['@ionic-native/camera/ngx/index'], global['@ionic-native/ionic-webview/ngx/index']));
 }(this, (function (exports, core, http, ngx, ngx$1, index, index$1) { 'use strict';
 
     /*! *****************************************************************************

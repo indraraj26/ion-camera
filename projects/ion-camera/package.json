@@ -1,6 +1,6 @@
 {
 	"name": "@indraraj26/ion-camera",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"peerDependencies": {
 		"@angular/common": "^9.1.9",
 		"@angular/core": "^9.1.9",
@@ -8,19 +8,9 @@
 		"@ionic-native/core": "^5.26.0",
 		"@ionic-native/ionic-webview": "^5.26.0"
 	},
-	"ngPackage": {
-		"lib": {
-			"entryFile": "public-api.ts"
-		},
-		"dest": "dist"
-	},
 	"dependencies": {},
 	"description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.",
 	"main": "index.js",
-	"devDependencies": {},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/indraraj26/ion-camera.git"

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Camera } from '@ionic-native/camera/ngx';
-import { IonCameraService } from './../../../projects/ion-camera/src/ion-camra.service';
-import { IConfig } from 'projects/ion-camera/dist/public-api';
+import { IonCameraService, IConfig } from '@indraraj26/ion-camera';
 @Component({
 	selector: 'app-home',
 	templateUrl: 'home.page.html',

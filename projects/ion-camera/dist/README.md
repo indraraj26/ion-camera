@@ -8,7 +8,7 @@ ion camera provides directive and service to integrate cordova camera plugin on 
 
 # Getting Started
 
-Feature:
+## Feature:
 
 -   File URI will give you an blob
 -   Directive and Service that manages everything for you out of box.
@@ -63,8 +63,10 @@ export class FeatModule {}
 
 # Usage
 
-Destination type FILE_URI it will return blob (recommend you to use)
-Destination type DATA_URL it will return base64 (default feature of cordova camera plugin and not recommended)
+## Destination Type:
+
+-   Destination type FILE_URI it will return blob (recommend you to use)
+-   Destination type DATA_URL it will return base64 (default feature of cordova camera plugin and not recommended)
 
 Directive:
 

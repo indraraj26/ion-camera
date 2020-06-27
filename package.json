@@ -16,9 +16,11 @@
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
-		"build-lib": "ng-packagr -p projects/ion-camera/package.json",
+		"build-lib": "ng build ion-camera",
+		"build-lib-prod": "ng build ion-camera --prod",
 		"add-lib": "npm i projects/ion-camera/dist",
-		"lib": "npm run build-lib && npm uninstall ion-camera && npm run add-lib"
+		"lib": "npm run build-lib && npm uninstall ion-camera && npm run add-lib",
+		"lib-prod": "npm run build-lib && npm uninstall ion-camera && npm run add-lib"
 	},
 	"private": true,
 	"dependencies": {
