@@ -4,7 +4,7 @@ ion camera provides directive and service to integrate cordova camera plugin on 
 
 # [Demo application](https://github.com/indraraj26/ionic5-starter-tabs-sidemenu/tree/ionic-camera-demo)
 
-<img src="https://github.com/indraraj26/ion-camera/blob/master/src/assets/images/source.JPG" alt="ion-camera-demo" width="250"/>
+<img src="https://github.com/indraraj26/ion-camera/blob/master/src/assets/images/source.JPG?raw=true" alt="ion-camera-demo" width="250"/>
 
 # Getting Started
 
@@ -63,7 +63,16 @@ export class FeatModule {}
 
 # Usage
 
+# **Breaking changes** 1.0.0
+
+Now output will be in object key and value.
+
+```
+  {result: blob, filePath: 'file://etc'}
+```
+
 ## Destination Type:
+
 -   Destination type FILE_URI it will return blob (recommend you to use)
 -   Destination type DATA_URL it will return base64 (default feature of cordova camera plugin and not recommended)
 
@@ -83,7 +92,8 @@ home.ts
 import { IonCameraService, IConfig } from '@indraraj26/ion-camera';
 
 export class HomePage {
-constructor(private camera: Camera) {}
+constructor(private camera: Camera, private _httpClient: HttpClient) {}
+    public showImage: string;
 
     config: IConfig = {
     	quality: 50,
@@ -94,9 +104,12 @@ constructor(private camera: Camera) {}
     };
 
     onCameraResult(event: any) {
-    	console.log('returns base64 or blob');
-    	console.log(event);
-    }
+    console.log('returns blob', event);
+    this.showImage = event.filePath;
+    const formData = new FormData();
+    formData.append('fileKey', event.result)
+    this._httpClient.post('url', formData).subscribe()
+  }
 
 }
 
@@ -108,6 +121,7 @@ Service:
 import { IonCameraService, IConfig } from '@indraraj26/ion-camera';
 
 export class HomePage {
+  public showImage: string;
 
 	config: IConfig = {
 		quality: 50,
@@ -115,14 +129,17 @@ export class HomePage {
 		encodingType: this.camera.EncodingType.JPEG,
 		mediaType: this.camera.MediaType.PICTURE,
     sourceType: this.camera.PictureSourceType.CAMERA,
-    outputType: 'blob'
   };
 
-  constructor(private _ionCameraService: IonCameraService, private _camera: Camera) { }
+  constructor(private _ionCameraService: IonCameraService, private _camera: Camera, private _httpClient: HttpClient) { }
 
   async openCameraThroughService() {
-    const result = await this._ionCameraService.cameraAction(this.config);
-    console.log(result, 'blob or base64')
+    const output = await this._ionCameraService.cameraAction(this.config);
+    console.log(output, 'blob')
+    this.showImage = output.filePath;
+    const formData = new FormData();
+    formData.append('fileKey', output.result)
+    this._httpClient.post('url', formData).subscribe()
   }
 }
 ```
@@ -130,3 +147,8 @@ export class HomePage {
 # Help Improve
 
 Found a bug or an issue with this? [Open a new issue](https://github.com/indraraj26/ion-camera/issues) here on GitHub.
+
+# Supported Version
+
+Ionic 4
+Ionic 5

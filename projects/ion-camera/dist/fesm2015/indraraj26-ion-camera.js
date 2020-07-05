@@ -1,10 +1,8 @@
 import { __awaiter, __decorate } from 'tslib';
-import { ɵɵdefineInjectable, ɵɵinject, Injectable, EventEmitter, Input, Output, HostListener, Directive, NgModule } from '@angular/core';
+import { Injectable, EventEmitter, Input, Output, HostListener, Directive, NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { Camera as Camera$1 } from '@ionic-native/camera/ngx/index';
-import { WebView as WebView$1 } from '@ionic-native/ionic-webview/ngx/index';
 
 let IonCameraService = class IonCameraService {
     constructor(_httpClient, _camera, _webview) {
@@ -18,10 +16,10 @@ let IonCameraService = class IonCameraService {
                 const result = yield this._camera.getPicture(option);
                 if (option.destinationType === 1) {
                     const blobUrl = this._webview.convertFileSrc(result);
-                    const blob = yield fetch(blobUrl).then((r) => r.blob());
-                    return blob;
+                    const blob = (yield fetch(blobUrl).then((r) => r.blob()));
+                    return { result: blob, filePath: blobUrl };
                 }
-                return result;
+                return { result };
             }
             catch (e) {
                 if (e === 'No Image Selected') {
@@ -37,9 +35,8 @@ IonCameraService.ctorParameters = () => [
     { type: Camera },
     { type: WebView }
 ];
-IonCameraService.ɵprov = ɵɵdefineInjectable({ factory: function IonCameraService_Factory() { return new IonCameraService(ɵɵinject(HttpClient), ɵɵinject(Camera$1), ɵɵinject(WebView$1)); }, token: IonCameraService, providedIn: "root" });
 IonCameraService = __decorate([
-    Injectable({ providedIn: 'root' })
+    Injectable()
 ], IonCameraService);
 
 let IonCameraDirective = class IonCameraDirective {

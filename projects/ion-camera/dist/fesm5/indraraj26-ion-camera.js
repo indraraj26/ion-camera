@@ -1,10 +1,8 @@
 import { __awaiter, __generator, __decorate } from 'tslib';
-import { ɵɵdefineInjectable, ɵɵinject, Injectable, EventEmitter, Input, Output, HostListener, Directive, NgModule } from '@angular/core';
+import { Injectable, EventEmitter, Input, Output, HostListener, Directive, NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { Camera as Camera$1 } from '@ionic-native/camera/ngx/index';
-import { WebView as WebView$1 } from '@ionic-native/ionic-webview/ngx/index';
 
 var IonCameraService = /** @class */ (function () {
     function IonCameraService(_httpClient, _camera, _webview) {
@@ -24,11 +22,13 @@ var IonCameraService = /** @class */ (function () {
                         result = _a.sent();
                         if (!(option.destinationType === 1)) return [3 /*break*/, 3];
                         blobUrl = this._webview.convertFileSrc(result);
-                        return [4 /*yield*/, fetch(blobUrl).then(function (r) { return r.blob(); })];
+                        return [4 /*yield*/, fetch(blobUrl).then(function (r) {
+                                return r.blob();
+                            })];
                     case 2:
-                        blob = _a.sent();
-                        return [2 /*return*/, blob];
-                    case 3: return [2 /*return*/, result];
+                        blob = (_a.sent());
+                        return [2 /*return*/, { result: blob, filePath: blobUrl }];
+                    case 3: return [2 /*return*/, { result: result }];
                     case 4:
                         e_1 = _a.sent();
                         if (e_1 === 'No Image Selected') {
@@ -45,9 +45,8 @@ var IonCameraService = /** @class */ (function () {
         { type: Camera },
         { type: WebView }
     ]; };
-    IonCameraService.ɵprov = ɵɵdefineInjectable({ factory: function IonCameraService_Factory() { return new IonCameraService(ɵɵinject(HttpClient), ɵɵinject(Camera$1), ɵɵinject(WebView$1)); }, token: IonCameraService, providedIn: "root" });
     IonCameraService = __decorate([
-        Injectable({ providedIn: 'root' })
+        Injectable()
     ], IonCameraService);
     return IonCameraService;
 }());

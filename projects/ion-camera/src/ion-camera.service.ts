@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { IConfig } from './config.interface';
-
-@Injectable({ providedIn: 'root' })
+import { Injectable } from '@angular/core';
+@Injectable()
 export class IonCameraService {
 	constructor(
 		private _httpClient: HttpClient,
@@ -18,10 +16,12 @@ export class IonCameraService {
 			const result = await this._camera.getPicture(option);
 			if (option.destinationType === 1) {
 				const blobUrl = this._webview.convertFileSrc(result);
-				const blob = await fetch(blobUrl).then((r) => r.blob());
-				return blob;
+				const blob = (await fetch(blobUrl).then((r) =>
+					r.blob(),
+				)) as Blob;
+				return { result: blob, filePath: blobUrl };
 			}
-			return result;
+			return { result };
 		} catch (e) {
 			if (e === 'No Image Selected') {
 				return e;
